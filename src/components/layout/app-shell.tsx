@@ -39,9 +39,9 @@ export function AppShell({
 
   return (
     <div className="flex min-h-full w-full">
-      <aside className="hidden md:flex md:w-64 md:flex-col md:border-r md:border-border md:px-4 md:py-6">
+      <aside className="hidden md:flex md:w-64 md:flex-col md:border-r md:border-border/60 md:bg-card/40 md:px-4 md:py-6 md:backdrop-blur-sm">
         <Link href="/" className="mb-6 flex items-center gap-2 px-2">
-          <span className="flex size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+          <span className="flex size-8 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-[oklch(0.5_0.17_190)] text-primary-foreground shadow-sm shadow-primary/30">
             <Trophy className="size-4.5" aria-hidden="true" />
           </span>
           <span className="text-lg font-semibold tracking-tight">{t("appName")}</span>
@@ -59,19 +59,32 @@ export function AppShell({
                 href={item.href}
                 aria-current={isActive ? "page" : undefined}
                 className={cn(
-                  "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+                  "relative flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
                   isActive
-                    ? "bg-accent text-accent-foreground"
+                    ? "bg-primary/10 text-primary"
                     : "text-muted-foreground hover:bg-accent/60 hover:text-accent-foreground",
                 )}
               >
+                {isActive && (
+                  <span
+                    className="absolute left-0 h-5 w-1 rounded-r-full bg-primary"
+                    aria-hidden="true"
+                  />
+                )}
                 <Icon className="size-5" aria-hidden="true" />
                 {label}
               </Link>
             );
           })}
         </nav>
-        <div className="mt-auto px-2 pt-6 text-xs text-muted-foreground">
+        <div className="mt-auto flex items-center gap-2 rounded-lg bg-muted/60 px-3 py-2 text-xs font-medium text-muted-foreground">
+          <span
+            className={cn(
+              "size-1.5 rounded-full",
+              role === "recruiter" ? "bg-[oklch(0.65_0.17_40)]" : "bg-success",
+            )}
+            aria-hidden="true"
+          />
           {role === "recruiter" ? "Espace recruteur / club" : "Espace athlète"}
         </div>
       </aside>
@@ -81,7 +94,7 @@ export function AppShell({
       </div>
 
       <nav
-        className="fixed inset-x-0 bottom-0 z-40 flex items-center justify-around border-t border-border bg-background/95 py-2 backdrop-blur md:hidden"
+        className="fixed inset-x-0 bottom-0 z-40 flex items-center justify-around border-t border-border/60 bg-background/90 py-2 shadow-[0_-4px_16px_rgba(0,0,0,0.06)] backdrop-blur-md md:hidden"
         aria-label={t("appName")}
       >
         {NAV_ITEMS.map((item) => {
@@ -96,11 +109,14 @@ export function AppShell({
               href={item.href}
               aria-current={isActive ? "page" : undefined}
               className={cn(
-                "flex flex-col items-center gap-1 rounded-lg px-3 py-1 text-xs font-medium transition-colors",
+                "flex flex-col items-center gap-1 rounded-lg px-3 py-1 text-xs font-medium transition-all",
                 isActive ? "text-primary" : "text-muted-foreground",
               )}
             >
-              <Icon className="size-5" aria-hidden="true" />
+              <Icon
+                className={cn("size-5 transition-transform", isActive && "scale-110")}
+                aria-hidden="true"
+              />
               {label}
             </Link>
           );

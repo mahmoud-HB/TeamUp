@@ -49,6 +49,13 @@
       "submit": "Send link",
       "success": "If an account exists with this email, a reset link has been sent.",
       "backToLogin": "Back to login"
+    },
+    "marketing": {
+      "tagline": "The network for sports talent",
+      "headline": "Get noticed, or discover the next star.",
+      "point1": "Complete profiles: stats, honors, career history",
+      "point2": "Advanced search for verified recruiters",
+      "point3": "Secure matchmaking, protected data"
     }
   },
   "Validation": {

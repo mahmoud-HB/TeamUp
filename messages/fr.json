@@ -49,6 +49,13 @@
       "submit": "Envoyer le lien",
       "success": "Si un compte existe avec cet e-mail, un lien de réinitialisation a été envoyé.",
       "backToLogin": "Retour à la connexion"
+    },
+    "marketing": {
+      "tagline": "Le réseau des talents sportifs",
+      "headline": "Faites-vous repérer, ou repérez le prochain talent.",
+      "point1": "Profils complets : stats, palmarès, parcours",
+      "point2": "Recherche avancée pour les recruteurs vérifiés",
+      "point3": "Mise en relation sécurisée, données protégées"
     }
   },
   "Validation": {

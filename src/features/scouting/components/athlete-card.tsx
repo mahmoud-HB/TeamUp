@@ -32,10 +32,12 @@ export function AthleteCard({ athlete }: { athlete: MockAthlete }) {
   const initials = `${athlete.firstName[0]}${athlete.lastName[0]}`;
 
   return (
-    <Card className="overflow-hidden transition-shadow hover:shadow-lg">
+    <Card className="group overflow-hidden transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 hover:ring-primary/20">
       <div
-        className="h-16 w-full"
-        style={{ backgroundColor: athlete.coverColor }}
+        className="relative h-16 w-full"
+        style={{
+          backgroundImage: `linear-gradient(135deg, ${athlete.coverColor}, color-mix(in oklch, ${athlete.coverColor}, black 25%))`,
+        }}
         aria-hidden="true"
       />
       <CardContent className="-mt-8 flex flex-col gap-3 pt-0">
@@ -57,7 +59,7 @@ export function AthleteCard({ athlete }: { athlete: MockAthlete }) {
         </div>
 
         <div>
-          <h3 className="font-semibold leading-tight">
+          <h3 className="font-semibold leading-tight transition-colors group-hover:text-primary">
             {athlete.firstName} {athlete.lastName}
           </h3>
           <p className="text-sm text-muted-foreground">
