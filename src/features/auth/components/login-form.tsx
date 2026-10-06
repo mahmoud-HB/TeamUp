@@ -9,9 +9,18 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { GoogleAuthButton } from "@/features/auth/components/google-auth-button";
-import { loginAction, type AuthActionState } from "@/features/auth/actions";
+import {
+  devBypassLoginAction,
+  loginAction,
+  type AuthActionState,
+} from "@/features/auth/actions";
 
 const INITIAL_STATE: AuthActionState = { status: "idle" };
+
+// Variable publique (NEXT_PUBLIC_*) : simple affichage conditionnel du
+// bouton côté client. Le vrai verrou de sécurité est côté serveur dans
+// `devBypassLoginAction` (voir lib/dev-auth.ts) — jamais actif en prod.
+const DEV_LOGIN_ENABLED = process.env.NEXT_PUBLIC_ENABLE_DEV_LOGIN === "true";
 
 export function LoginForm() {
   const t = useTranslations("Auth.login");
@@ -19,7 +28,18 @@ export function LoginForm() {
     loginAction,
     INITIAL_STATE,
   );
+  const [devState, devFormAction, isDevPending] = useActionState(
+    async () => devBypassLoginAction(),
+    INITIAL_STATE,
+  );
   const router = useRouter();
+
+  useEffect(() => {
+    if (devState.status === "success") {
+      router.push("/");
+      router.refresh();
+    }
+  }, [devState.status, router]);
 
   useEffect(() => {
     if (state.status === "success") {
@@ -98,6 +118,19 @@ export function LoginForm() {
           <Separator className="flex-1" />
         </div>
         <GoogleAuthButton labelKey="login" />
+
+        {DEV_LOGIN_ENABLED && (
+          <form action={devFormAction} className="mt-4">
+            <Button
+              type="submit"
+              variant="outline"
+              disabled={isDevPending}
+              className="w-full border-dashed border-amber-500 text-amber-600 hover:bg-amber-500/10 dark:text-amber-400"
+            >
+              {isDevPending ? "…" : "Connexion test (dev, pas de vraie session)"}
+            </Button>
+          </form>
+        )}
 
         <p className="mt-6 text-center text-sm text-muted-foreground">
           {t("noAccount")}{" "}
