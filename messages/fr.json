@@ -2,6 +2,8 @@
   "Nav": {
     "home": "Accueil",
     "search": "Recherche",
+    "searchAthlete": "Offres",
+    "searchRecruiter": "Rechercher",
     "messages": "Messagerie",
     "notifications": "Notifications",
     "profile": "Profil",

@@ -1,7 +1,13 @@
-import { getTranslations } from "next-intl/server";
-import { ComingSoon } from "@/components/layout/coming-soon";
+import { getDevSession } from "@/lib/dev-session";
+import { AthleteSearch } from "@/features/scouting/components/athlete-search";
+import { OffersList } from "@/features/scouting/components/offers-list";
 
 export default async function SearchPage() {
-  const t = await getTranslations("Nav");
-  return <ComingSoon title={t("search")} />;
+  const devSession = await getDevSession();
+  const role = devSession?.role ?? "athlete";
+
+  if (role === "recruiter") {
+    return <AthleteSearch />;
+  }
+  return <OffersList />;
 }

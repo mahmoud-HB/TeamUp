@@ -29,7 +29,10 @@ export function LoginForm() {
     INITIAL_STATE,
   );
   const [devState, devFormAction, isDevPending] = useActionState(
-    async () => devBypassLoginAction(),
+    async (_prev: AuthActionState, formData: FormData) =>
+      devBypassLoginAction(
+        formData.get("role") === "recruiter" ? "recruiter" : "athlete",
+      ),
     INITIAL_STATE,
   );
   const router = useRouter();
@@ -120,15 +123,35 @@ export function LoginForm() {
         <GoogleAuthButton labelKey="login" />
 
         {DEV_LOGIN_ENABLED && (
-          <form action={devFormAction} className="mt-4">
-            <Button
-              type="submit"
-              variant="outline"
-              disabled={isDevPending}
-              className="w-full border-dashed border-amber-500 text-amber-600 hover:bg-amber-500/10 dark:text-amber-400"
-            >
-              {isDevPending ? "…" : "Connexion test (dev, pas de vraie session)"}
-            </Button>
+          <form
+            action={devFormAction}
+            className="mt-4 flex flex-col gap-2 rounded-lg border border-dashed border-amber-500 p-3"
+          >
+            <p className="text-center text-xs font-medium text-amber-600 dark:text-amber-400">
+              Mode démo — données 100% fictives, aucune session réelle
+            </p>
+            <div className="flex gap-2">
+              <Button
+                type="submit"
+                name="role"
+                value="athlete"
+                variant="outline"
+                disabled={isDevPending}
+                className="flex-1 border-amber-500 text-amber-700 hover:bg-amber-500/10 dark:text-amber-400"
+              >
+                {isDevPending ? "…" : "Démo Athlète"}
+              </Button>
+              <Button
+                type="submit"
+                name="role"
+                value="recruiter"
+                variant="outline"
+                disabled={isDevPending}
+                className="flex-1 border-amber-500 text-amber-700 hover:bg-amber-500/10 dark:text-amber-400"
+              >
+                {isDevPending ? "…" : "Démo Recruteur / Club"}
+              </Button>
+            </div>
           </form>
         )}
 

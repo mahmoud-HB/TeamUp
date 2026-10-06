@@ -3,7 +3,7 @@
 import { cookies } from "next/headers";
 import { getTranslations } from "next-intl/server";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { DEV_BYPASS_COOKIE, isDevBypassEnabled } from "@/lib/dev-auth";
+import { DEV_BYPASS_COOKIE, DEV_ROLE_COOKIE, isDevBypassEnabled, type DevRole } from "@/lib/dev-auth";
 import {
   createForgotPasswordSchema,
   createLoginSchema,
@@ -145,22 +145,27 @@ export async function signInWithGoogleAction() {
 
 /**
  * Connexion factice réservée au développement local (voir `lib/dev-auth.ts`).
- * N'établit aucune session Supabase : pose uniquement un cookie non-sensible
- * permettant au layout authentifié de laisser passer l'utilisateur pour
- * visualiser l'UI sans backend fonctionnel.
+ * N'établit aucune session Supabase : pose uniquement des cookies non
+ * sensibles (bypass + rôle démo) permettant au layout authentifié de
+ * laisser passer l'utilisateur pour visualiser l'UI sans backend
+ * fonctionnel, avec des données 100% fictives.
  */
-export async function devBypassLoginAction(): Promise<AuthActionState> {
+export async function devBypassLoginAction(
+  role: DevRole,
+): Promise<AuthActionState> {
   if (!isDevBypassEnabled()) {
     return { status: "error", message: "Dev login is disabled." };
   }
 
   const cookieStore = await cookies();
-  cookieStore.set(DEV_BYPASS_COOKIE, "1", {
+  const cookieOptions = {
     httpOnly: true,
-    sameSite: "lax",
+    sameSite: "lax" as const,
     path: "/",
     maxAge: 60 * 60 * 24, // 24h
-  });
+  };
+  cookieStore.set(DEV_BYPASS_COOKIE, "1", cookieOptions);
+  cookieStore.set(DEV_ROLE_COOKIE, role, cookieOptions);
 
   return { status: "success" };
 }

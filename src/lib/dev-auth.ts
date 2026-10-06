@@ -9,10 +9,17 @@
  * tant qu'un vrai projet Supabase n'est pas configuré.
  */
 export const DEV_BYPASS_COOKIE = "scoutly-dev-bypass";
+export const DEV_ROLE_COOKIE = "scoutly-dev-role";
+
+export type DevRole = "athlete" | "recruiter";
 
 export function isDevBypassEnabled(): boolean {
   return (
     process.env.NODE_ENV !== "production" &&
     process.env.NEXT_PUBLIC_ENABLE_DEV_LOGIN === "true"
   );
+}
+
+export function parseDevRole(value: string | undefined): DevRole {
+  return value === "recruiter" ? "recruiter" : "athlete";
 }

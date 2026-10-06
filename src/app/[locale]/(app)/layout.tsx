@@ -1,17 +1,18 @@
-import { cookies } from "next/headers";
 import { redirect } from "@/i18n/navigation";
 import { AppShell } from "@/components/layout/app-shell";
+import { OnboardingTour } from "@/components/onboarding/onboarding-tour";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { DEV_BYPASS_COOKIE, isDevBypassEnabled } from "@/lib/dev-auth";
+import { getDevSession } from "@/lib/dev-session";
+import type { DevRole } from "@/lib/dev-auth";
 
 /**
  * Layout des écrans applicatifs authentifiés : vérifie la session côté
  * serveur et redirige vers la connexion si l'utilisateur n'est pas connecté.
  *
- * Exception strictement limitée au développement local : si le cookie de
- * bypass dev est présent (voir `lib/dev-auth.ts`), l'accès est autorisé sans
- * session Supabase réelle, pour permettre de visualiser l'UI sans backend
- * fonctionnel. Jamais actif en production.
+ * Exception strictement limitée au développement local : si une session de
+ * démo est active (voir `lib/dev-session.ts`), l'accès est autorisé sans
+ * session Supabase réelle, pour permettre de visualiser l'UI (avec des
+ * données 100% fictives). Jamais actif en production.
  */
 export default async function AppLayout({
   children,
@@ -26,24 +27,30 @@ export default async function AppLayout({
     data: { user },
   } = await supabase.auth.getUser();
 
-  const cookieStore = await cookies();
-  const hasDevBypass =
-    isDevBypassEnabled() && cookieStore.get(DEV_BYPASS_COOKIE)?.value === "1";
+  const devSession = await getDevSession();
 
-  if (!user && !hasDevBypass) {
+  if (!user && !devSession) {
     redirect({ href: "/login", locale });
   }
 
+  const role: DevRole =
+    devSession?.role ??
+    (user?.user_metadata?.role === "recruiter" ||
+    user?.user_metadata?.role === "organization"
+      ? "recruiter"
+      : "athlete");
+
   return (
-    <AppShell>
-      {!user && hasDevBypass && (
+    <AppShell role={role}>
+      {devSession && (
         <div
           role="status"
-          className="bg-amber-500/15 px-4 py-2 text-center text-xs font-medium text-amber-600 dark:text-amber-400"
+          className="bg-warning/15 px-4 py-2 text-center text-xs font-medium text-amber-700 dark:text-amber-300"
         >
-          Mode développeur : session factice, aucune donnée réelle.
+          Mode démo : session et données 100% fictives.
         </div>
       )}
+      <OnboardingTour role={role} />
       {children}
     </AppShell>
   );

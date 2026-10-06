@@ -90,6 +90,29 @@ réellement : configurez un projet Supabase de test (`supabase start`
 recommandé), désactivez `enable_confirmations` dans `supabase/config.toml`
 (`[auth.email]`), renseignez `.env.local`, puis relancez `npm run test:e2e`.
 
+## Mode démo (données fictives)
+
+Pour visualiser et tester l'application de bout en bout **sans backend
+Supabase réel**, un mode démo dev-only est disponible :
+
+- `.env.local` doit contenir `NEXT_PUBLIC_ENABLE_DEV_LOGIN=true` (jamais actif
+  en production, voir `src/lib/dev-auth.ts` → `isDevBypassEnabled()`).
+- Sur `/login`, deux boutons « Démo Athlète » et « Démo Recruteur / Club »
+  posent une session factice (cookies `scoutly-dev-bypass` /
+  `scoutly-dev-role`) et donnent accès à l'application avec un jeu de
+  données 100% fictives (`src/lib/mock/`) : 8 profils athlètes (football,
+  basketball, volleyball, rugby), 3 organisations/recruteurs, 2 offres.
+- Les deux rôles ont des interfaces dédiées : tableau de bord, navigation et
+  page de recherche diffèrent (athlète → offres/complétion de profil,
+  recruteur → recherche filtrée + fiches athlètes détaillées + favoris/
+  demande de contact).
+- Un bandeau « Mode démo » s'affiche en permanence et un tutoriel de
+  bienvenue (`src/components/onboarding/onboarding-tour.tsx`) apparaît une
+  fois par rôle à la première connexion (flag `localStorage`).
+- La recherche fictive (`searchMockAthletes`) applique les mêmes règles que
+  les futures RLS réelles : les profils mineurs et privés ne sont jamais
+  renvoyés à un recruteur.
+
 ## Structure du projet
 
 ```
