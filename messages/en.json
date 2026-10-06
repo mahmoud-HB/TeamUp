@@ -1,0 +1,130 @@
+{
+  "Nav": {
+    "home": "Home",
+    "search": "Search",
+    "messages": "Messages",
+    "notifications": "Notifications",
+    "profile": "Profile",
+    "appName": "Scoutly"
+  },
+  "Auth": {
+    "login": {
+      "title": "Log in",
+      "subtitle": "Access your Scoutly account",
+      "email": "Email address",
+      "password": "Password",
+      "submit": "Log in",
+      "withGoogle": "Continue with Google",
+      "forgotPassword": "Forgot password?",
+      "noAccount": "Don't have an account?",
+      "register": "Create an account",
+      "error": "Invalid credentials, please try again."
+    },
+    "register": {
+      "title": "Create an account",
+      "subtitle": "Join Scoutly as an athlete, recruiter or club",
+      "email": "Email address",
+      "password": "Password",
+      "confirmPassword": "Confirm password",
+      "role": "I am...",
+      "roleAthlete": "Athlete / Player",
+      "roleRecruiter": "Recruiter / Agent",
+      "roleOrganization": "Club / Organization",
+      "birthDate": "Date of birth",
+      "birthDateHint": "Required for minor protection rules.",
+      "acceptTerms": "I accept the terms of use and privacy policy",
+      "submit": "Create my account",
+      "withGoogle": "Continue with Google",
+      "haveAccount": "Already have an account?",
+      "login": "Log in",
+      "success": "Account created! Check your inbox to confirm your email.",
+      "error": "Could not create the account, please try again."
+    },
+    "forgotPassword": {
+      "title": "Forgot password",
+      "subtitle": "Receive a reset link by email",
+      "email": "Email address",
+      "submit": "Send link",
+      "success": "If an account exists with this email, a reset link has been sent.",
+      "backToLogin": "Back to login"
+    }
+  },
+  "Validation": {
+    "emailInvalid": "Invalid email address.",
+    "passwordMin": "Password must contain at least 8 characters.",
+    "passwordsMismatch": "Passwords do not match.",
+    "required": "This field is required.",
+    "termsRequired": "You must accept the terms.",
+    "birthDateRequired": "Date of birth is required.",
+    "birthDateFuture": "Date of birth cannot be in the future.",
+    "usernameMin": "Username must contain at least 3 characters.",
+    "usernameMax": "Username cannot exceed 30 characters.",
+    "usernameFormat": "Username can only contain letters, numbers, dots, dashes and underscores.",
+    "bioMax": "Bio cannot exceed 500 characters.",
+    "sportsRequired": "Select at least one sport.",
+    "levelRequired": "Level is required.",
+    "minorVisibilityRestricted": "Minor profiles cannot be public: choose \"Verified recruiters\" or \"Private\"."
+  },
+  "Profile": {
+    "wizard": {
+      "title": "Complete your profile",
+      "step": "Step {current} of {total}",
+      "next": "Next",
+      "previous": "Previous",
+      "finish": "Finish",
+      "skip": "Skip for now"
+    },
+    "steps": {
+      "identity": "Identity",
+      "sports": "Sports & level",
+      "availability": "Availability",
+      "visibility": "Visibility"
+    },
+    "identity": {
+      "username": "Username",
+      "avatar": "Profile picture",
+      "bio": "Bio",
+      "country": "Country",
+      "birthDate": "Date of birth"
+    },
+    "sports": {
+      "sport": "Sport",
+      "position": "Position / role",
+      "level": "Level",
+      "addSport": "Add a sport",
+      "remove": "Remove",
+      "levels": {
+        "beginner": "Beginner",
+        "amateur": "Amateur",
+        "semi_pro": "Semi-professional",
+        "pro": "Professional"
+      }
+    },
+    "availability": {
+      "status": "Availability",
+      "free": "Free",
+      "under_contract": "Under contract",
+      "on_loan": "On loan",
+      "mobility": "Geographic mobility"
+    },
+    "visibility": {
+      "title": "Who can see your profile?",
+      "public": "Public",
+      "publicHint": "Visible to everyone, including search engines.",
+      "verified_only": "Verified recruiters only",
+      "verifiedOnlyHint": "Visible only to verified recruiters and clubs.",
+      "private": "Private",
+      "privateHint": "Accessible only via a secret link."
+    },
+    "minorNotice": "You indicated you are a minor: your profile will not be publicly indexed, your contact details will never be shown, and any contact will go through a legal guardian."
+  },
+  "Common": {
+    "loading": "Loading...",
+    "error": "Something went wrong.",
+    "retry": "Retry",
+    "empty": "No results yet.",
+    "cancel": "Cancel",
+    "save": "Save",
+    "back": "Back"
+  }
+}

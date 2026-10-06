@@ -1,0 +1,130 @@
+{
+  "Nav": {
+    "home": "Accueil",
+    "search": "Recherche",
+    "messages": "Messagerie",
+    "notifications": "Notifications",
+    "profile": "Profil",
+    "appName": "Scoutly"
+  },
+  "Auth": {
+    "login": {
+      "title": "Connexion",
+      "subtitle": "Accédez à votre espace Scoutly",
+      "email": "Adresse e-mail",
+      "password": "Mot de passe",
+      "submit": "Se connecter",
+      "withGoogle": "Continuer avec Google",
+      "forgotPassword": "Mot de passe oublié ?",
+      "noAccount": "Pas encore de compte ?",
+      "register": "Créer un compte",
+      "error": "Identifiants incorrects, veuillez réessayer."
+    },
+    "register": {
+      "title": "Créer un compte",
+      "subtitle": "Rejoignez Scoutly en tant qu'athlète, recruteur ou club",
+      "email": "Adresse e-mail",
+      "password": "Mot de passe",
+      "confirmPassword": "Confirmer le mot de passe",
+      "role": "Je suis...",
+      "roleAthlete": "Athlète / Joueur",
+      "roleRecruiter": "Recruteur / Agent",
+      "roleOrganization": "Club / Organisation",
+      "birthDate": "Date de naissance",
+      "birthDateHint": "Requise pour la protection des mineurs.",
+      "acceptTerms": "J'accepte les conditions d'utilisation et la politique de confidentialité",
+      "submit": "Créer mon compte",
+      "withGoogle": "Continuer avec Google",
+      "haveAccount": "Déjà un compte ?",
+      "login": "Se connecter",
+      "success": "Compte créé ! Vérifiez votre boîte e-mail pour confirmer votre adresse.",
+      "error": "Impossible de créer le compte, veuillez réessayer."
+    },
+    "forgotPassword": {
+      "title": "Mot de passe oublié",
+      "subtitle": "Recevez un lien de réinitialisation par e-mail",
+      "email": "Adresse e-mail",
+      "submit": "Envoyer le lien",
+      "success": "Si un compte existe avec cet e-mail, un lien de réinitialisation a été envoyé.",
+      "backToLogin": "Retour à la connexion"
+    }
+  },
+  "Validation": {
+    "emailInvalid": "Adresse e-mail invalide.",
+    "passwordMin": "Le mot de passe doit contenir au moins 8 caractères.",
+    "passwordsMismatch": "Les mots de passe ne correspondent pas.",
+    "required": "Ce champ est requis.",
+    "termsRequired": "Vous devez accepter les conditions.",
+    "birthDateRequired": "La date de naissance est requise.",
+    "birthDateFuture": "La date de naissance ne peut pas être dans le futur.",
+    "usernameMin": "Le pseudo doit contenir au moins 3 caractères.",
+    "usernameMax": "Le pseudo ne peut pas dépasser 30 caractères.",
+    "usernameFormat": "Le pseudo ne peut contenir que des lettres, chiffres, points, tirets et underscores.",
+    "bioMax": "La bio ne peut pas dépasser 500 caractères.",
+    "sportsRequired": "Sélectionnez au moins un sport.",
+    "levelRequired": "Le niveau est requis.",
+    "minorVisibilityRestricted": "Les profils de mineurs ne peuvent pas être publics : choisissez \"Recruteurs vérifiés\" ou \"Privé\"."
+  },
+  "Profile": {
+    "wizard": {
+      "title": "Complétez votre profil",
+      "step": "Étape {current} sur {total}",
+      "next": "Suivant",
+      "previous": "Précédent",
+      "finish": "Terminer",
+      "skip": "Passer pour l'instant"
+    },
+    "steps": {
+      "identity": "Identité",
+      "sports": "Sports & niveau",
+      "availability": "Disponibilité",
+      "visibility": "Visibilité"
+    },
+    "identity": {
+      "username": "Pseudo",
+      "avatar": "Photo de profil",
+      "bio": "Bio",
+      "country": "Pays",
+      "birthDate": "Date de naissance"
+    },
+    "sports": {
+      "sport": "Sport",
+      "position": "Poste / rôle",
+      "level": "Niveau",
+      "addSport": "Ajouter un sport",
+      "remove": "Retirer",
+      "levels": {
+        "beginner": "Débutant",
+        "amateur": "Amateur",
+        "semi_pro": "Semi-professionnel",
+        "pro": "Professionnel"
+      }
+    },
+    "availability": {
+      "status": "Disponibilité",
+      "free": "Libre",
+      "under_contract": "Sous contrat",
+      "on_loan": "En prêt",
+      "mobility": "Mobilité géographique"
+    },
+    "visibility": {
+      "title": "Qui peut voir votre profil ?",
+      "public": "Public",
+      "publicHint": "Visible par tous, y compris sur les moteurs de recherche.",
+      "verified_only": "Recruteurs vérifiés uniquement",
+      "verifiedOnlyHint": "Visible uniquement par les recruteurs et clubs vérifiés.",
+      "private": "Privé",
+      "privateHint": "Accessible uniquement via un lien secret."
+    },
+    "minorNotice": "Vous avez indiqué être mineur·e : votre profil ne sera pas indexé publiquement, vos coordonnées ne seront jamais affichées, et tout contact passera par un représentant légal."
+  },
+  "Common": {
+    "loading": "Chargement...",
+    "error": "Une erreur est survenue.",
+    "retry": "Réessayer",
+    "empty": "Aucun résultat pour le moment.",
+    "cancel": "Annuler",
+    "save": "Enregistrer",
+    "back": "Retour"
+  }
+}
