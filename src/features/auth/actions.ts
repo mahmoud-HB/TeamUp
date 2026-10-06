@@ -3,7 +3,13 @@
 import { cookies } from "next/headers";
 import { getTranslations } from "next-intl/server";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { DEV_BYPASS_COOKIE, DEV_ROLE_COOKIE, isDevBypassEnabled, type DevRole } from "@/lib/dev-auth";
+import {
+  DEV_BYPASS_COOKIE,
+  DEV_ROLE_COOKIE,
+  isDevBypassEnabled,
+  parseDevRole,
+  type DevRole,
+} from "@/lib/dev-auth";
 import {
   createForgotPasswordSchema,
   createLoginSchema,
@@ -168,4 +174,38 @@ export async function devBypassLoginAction(
   cookieStore.set(DEV_ROLE_COOKIE, role, cookieOptions);
 
   return { status: "success" };
+}
+
+/**
+ * Bascule le rôle de démo (athlète <-> recruteur) sans recréer de session.
+ * N'a aucun effet si le bypass dev n'est pas actif.
+ */
+export async function switchDevRoleAction(): Promise<void> {
+  if (!isDevBypassEnabled()) return;
+
+  const cookieStore = await cookies();
+  if (cookieStore.get(DEV_BYPASS_COOKIE)?.value !== "1") return;
+
+  const current = parseDevRole(cookieStore.get(DEV_ROLE_COOKIE)?.value);
+  const next: DevRole = current === "athlete" ? "recruiter" : "athlete";
+
+  cookieStore.set(DEV_ROLE_COOKIE, next, {
+    httpOnly: true,
+    sameSite: "lax",
+    path: "/",
+    maxAge: 60 * 60 * 24,
+  });
+}
+
+/**
+ * Déconnexion : supprime les cookies de démo s'ils existent et ferme toute
+ * session Supabase réelle. Fonctionne pour les deux cas (démo et réelle).
+ */
+export async function logoutAction(): Promise<void> {
+  const cookieStore = await cookies();
+  cookieStore.delete(DEV_BYPASS_COOKIE);
+  cookieStore.delete(DEV_ROLE_COOKIE);
+
+  const supabase = await createSupabaseServerClient();
+  await supabase.auth.signOut();
 }

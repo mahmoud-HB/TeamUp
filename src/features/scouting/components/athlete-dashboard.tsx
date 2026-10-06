@@ -1,6 +1,6 @@
 import { BadgeCheck, ArrowRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -36,6 +36,7 @@ export function AthleteDashboard({ athlete }: { athlete: MockAthlete }) {
         <CardContent className="flex flex-col gap-4 pt-6 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-4">
             <Avatar className="size-16">
+              <AvatarImage src={athlete.avatarUrl} alt="" />
               <AvatarFallback className="text-base font-semibold">
                 {initials}
               </AvatarFallback>

@@ -41,7 +41,7 @@ export default async function AppLayout({
       : "athlete");
 
   return (
-    <AppShell role={role}>
+    <AppShell role={role} isDevSession={!!devSession}>
       {devSession && (
         <div
           role="status"

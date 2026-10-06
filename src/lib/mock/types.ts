@@ -73,6 +73,7 @@ export type MockRecruiterOrg = {
   country: string;
   verified: boolean;
   logoColor: string;
+  logoUrl: string;
   description: string;
 };
 
@@ -85,4 +86,5 @@ export type MockOffer = {
   level: SportLevel;
   location: string;
   description: string;
+  createdAt: string;
 };

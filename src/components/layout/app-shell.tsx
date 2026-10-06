@@ -4,6 +4,7 @@ import { Home, Search, MessageCircle, Bell, UserRound, Trophy } from "lucide-rea
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
+import { RoleSwitcher } from "@/components/layout/role-switcher";
 import type { DevRole } from "@/lib/dev-auth";
 
 type NavItem = {
@@ -29,9 +30,11 @@ const NAV_ITEMS: NavItem[] = [
 export function AppShell({
   children,
   role = "athlete",
+  isDevSession = false,
 }: {
   children: React.ReactNode;
   role?: DevRole;
+  isDevSession?: boolean;
 }) {
   const t = useTranslations("Nav");
   const pathname = usePathname();
@@ -77,19 +80,31 @@ export function AppShell({
             );
           })}
         </nav>
-        <div className="mt-auto flex items-center gap-2 rounded-lg bg-muted/60 px-3 py-2 text-xs font-medium text-muted-foreground">
-          <span
-            className={cn(
-              "size-1.5 rounded-full",
-              role === "recruiter" ? "bg-[oklch(0.65_0.17_40)]" : "bg-success",
-            )}
-            aria-hidden="true"
-          />
-          {role === "recruiter" ? "Espace recruteur / club" : "Espace athlète"}
+        <div className="mt-auto flex flex-col gap-2">
+          <div className="flex items-center gap-2 rounded-lg bg-muted/60 px-3 py-2 text-xs font-medium text-muted-foreground">
+            <span
+              className={cn(
+                "size-1.5 rounded-full",
+                role === "recruiter" ? "bg-[oklch(0.65_0.17_40)]" : "bg-success",
+              )}
+              aria-hidden="true"
+            />
+            {role === "recruiter" ? "Espace recruteur / club" : "Espace athlète"}
+          </div>
+          <RoleSwitcher role={role} isDevSession={isDevSession} />
         </div>
       </aside>
 
       <div className="flex min-h-full w-full flex-1 flex-col pb-16 md:pb-0">
+        <div className="sticky top-0 z-30 flex items-center justify-between border-b border-border/60 bg-background/90 px-4 py-2 backdrop-blur-md md:hidden">
+          <Link href="/" className="flex items-center gap-2">
+            <span className="flex size-7 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-[oklch(0.5_0.17_190)] text-primary-foreground shadow-sm shadow-primary/30">
+              <Trophy className="size-3.5" aria-hidden="true" />
+            </span>
+            <span className="text-sm font-semibold tracking-tight">{t("appName")}</span>
+          </Link>
+          <RoleSwitcher role={role} isDevSession={isDevSession} compact />
+        </div>
         <main className="flex-1">{children}</main>
       </div>
 

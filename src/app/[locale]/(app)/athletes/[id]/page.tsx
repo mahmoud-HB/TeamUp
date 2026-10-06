@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { BadgeCheck, MapPin, Ruler, Weight } from "lucide-react";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -46,14 +46,20 @@ export default async function AthleteDetailPage({
   return (
     <div className="flex flex-col gap-6 p-4 md:p-6">
       <div
-        className="h-28 w-full rounded-xl"
-        style={{ backgroundColor: athlete.coverColor }}
+        className="h-28 w-full rounded-xl bg-cover bg-center"
+        style={{
+          backgroundColor: athlete.coverColor,
+          backgroundImage: athlete.media[0]?.url
+            ? `linear-gradient(to bottom, color-mix(in oklch, ${athlete.coverColor} 60%, transparent), ${athlete.coverColor}), url(${athlete.media[0].url})`
+            : undefined,
+        }}
         aria-hidden="true"
       />
 
       <div className="-mt-16 flex flex-col gap-4 px-2 sm:flex-row sm:items-end sm:justify-between">
         <div className="flex items-end gap-4">
           <Avatar className="size-24 border-4 border-background">
+            <AvatarImage src={athlete.avatarUrl} alt="" />
             <AvatarFallback className="text-2xl font-semibold">
               {initials}
             </AvatarFallback>
@@ -132,6 +138,34 @@ export default async function AthleteDetailPage({
               <Badge variant="outline">{LEVEL_LABELS[sport.level]}</Badge>
             </div>
           ))}
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-base">Photos & vidéos</CardTitle>
+        </CardHeader>
+        <CardContent>
+          {athlete.media.length === 0 ? (
+            <p className="text-sm text-muted-foreground">Non renseigné.</p>
+          ) : (
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+              {athlete.media.map((item) => (
+                <figure key={item.id} className="overflow-hidden rounded-lg border border-border">
+                  {/* Média de démonstration (picsum.photos), jamais un vrai upload. */}
+                  <img
+                    src={item.thumbnailUrl || item.url}
+                    alt=""
+                    loading="lazy"
+                    className="aspect-video w-full object-cover"
+                  />
+                  <figcaption className="px-2 py-1.5 text-xs text-muted-foreground">
+                    {item.label}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          )}
         </CardContent>
       </Card>
 

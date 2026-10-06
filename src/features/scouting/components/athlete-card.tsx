@@ -1,6 +1,6 @@
 import { BadgeCheck, MapPin } from "lucide-react";
 import { Link } from "@/i18n/navigation";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -43,6 +43,7 @@ export function AthleteCard({ athlete }: { athlete: MockAthlete }) {
       <CardContent className="-mt-8 flex flex-col gap-3 pt-0">
         <div className="flex items-end justify-between">
           <Avatar className="size-16 border-4 border-card">
+            <AvatarImage src={athlete.avatarUrl} alt="" />
             <AvatarFallback className="text-base font-semibold">
               {initials}
             </AvatarFallback>
