@@ -142,7 +142,14 @@ docs/SPEC.md             Cahier des charges (source de vérité fonctionnelle)
 
 - ✅ Étape 1 : scaffolding, auth (email + Google/Discord), migrations
   profils/sports, layout responsive, assistant de complétion de profil, tests.
-- ⏳ Prochaines étapes : fil d'actualité, réseau, recherche/filtres avancés,
-  équipes/offres, messagerie temps réel, notifications, modération/admin,
-  packaging Capacitor, puis l'assistant IA de scouting (voir `docs/SPEC.md`,
-  section 9).
+- ✅ Mode démo : données fictives, interfaces athlète/recruteur, design
+  modernisé, tutoriel d'onboarding (sans backend requis).
+- 🚧 Assistant IA de scouting (`docs/SPEC.md`, section 9) :
+  - ✅ Étape 1/5 : schéma de données + migrations RLS (`ai_conversations`,
+    `ai_messages`, `ai_search_logs`), voir
+    `supabase/migrations/0007_ai_scouting.sql`.
+  - ⏳ Étapes suivantes : couche outils + recherche + score, intégration
+    LLM/streaming, UI du chat, garde-fous/quotas/tests.
+- ⏳ Reste de la feuille de route : fil d'actualité, réseau, recherche/filtres
+  avancés réels, équipes/offres, messagerie temps réel, notifications,
+  modération/admin, packaging Capacitor.
