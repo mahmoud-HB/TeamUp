@@ -117,6 +117,9 @@ Supabase réel**, un mode démo dev-only est disponible :
 
 ## Déployer une démo publique gratuite (Vercel)
 
+🔗 **Démo en ligne** : https://scoutly-demo.vercel.app (données 100% fictives,
+boutons « Démo Athlète » / « Démo Recruteur » sur la page de connexion).
+
 Le mode démo ci-dessus est **désactivé par défaut en production** (double
 verrou de sécurité). Pour un déploiement de démo public en ligne (données
 100% fictives, aucun vrai compte utilisateur), il faut l'autoriser
