@@ -95,8 +95,10 @@ recommandé), désactivez `enable_confirmations` dans `supabase/config.toml`
 Pour visualiser et tester l'application de bout en bout **sans backend
 Supabase réel**, un mode démo dev-only est disponible :
 
-- `.env.local` doit contenir `NEXT_PUBLIC_ENABLE_DEV_LOGIN=true` (jamais actif
-  en production, voir `src/lib/dev-auth.ts` → `isDevBypassEnabled()`).
+- `.env.local` doit contenir `NEXT_PUBLIC_ENABLE_DEV_LOGIN=true` (désactivé
+  par défaut en production, voir `src/lib/dev-auth.ts` →
+  `isDevBypassEnabled()` — et section déploiement ci-dessous pour l'exposer
+  volontairement sur une démo en ligne).
 - Sur `/login`, deux boutons « Démo Athlète » et « Démo Recruteur / Club »
   posent une session factice (cookies `scoutly-dev-bypass` /
   `scoutly-dev-role`) et donnent accès à l'application avec un jeu de
@@ -112,6 +114,34 @@ Supabase réel**, un mode démo dev-only est disponible :
 - La recherche fictive (`searchMockAthletes`) applique les mêmes règles que
   les futures RLS réelles : les profils mineurs et privés ne sont jamais
   renvoyés à un recruteur.
+
+## Déployer une démo publique gratuite (Vercel)
+
+Le mode démo ci-dessus est **désactivé par défaut en production** (double
+verrou de sécurité). Pour un déploiement de démo public en ligne (données
+100% fictives, aucun vrai compte utilisateur), il faut l'autoriser
+explicitement :
+
+1. Créez un compte gratuit sur [vercel.com](https://vercel.com) (ou
+   déployez via `npx vercel` en CLI) et importez ce dépôt.
+2. Dans les variables d'environnement du projet Vercel, renseignez :
+   - `NEXT_PUBLIC_SUPABASE_URL` et `NEXT_PUBLIC_SUPABASE_ANON_KEY` :
+     n'importe quelle URL au format Supabase valide suffit si vous n'avez
+     pas de vrai projet (ex. valeurs de `.env.example`) — le mode démo ne
+     les utilise jamais réellement, mais l'app les valide au démarrage.
+   - `NEXT_PUBLIC_ENABLE_DEV_LOGIN=true`
+   - `NEXT_PUBLIC_ALLOW_PUBLIC_DEMO=true` — **opt-in explicite** qui lève le
+     verrou "jamais en production" uniquement sur ce déploiement. Ne jamais
+     positionner cette variable sur un déploiement connecté à un vrai
+     projet Supabase / de vraies données utilisateur.
+3. Déployez. Les visiteurs pourront utiliser les boutons « Démo Athlète »
+   et « Démo Recruteur / Club » pour explorer le site avec les données
+   fictives, sans inscription ni vrai backend.
+
+Pour une version avec la vraie authentification Supabase (inscription,
+connexion, profils réels), créez plutôt un projet Supabase gratuit,
+exécutez les migrations (`supabase/migrations/`), et renseignez les vraies
+clés — laissez alors `NEXT_PUBLIC_ENABLE_DEV_LOGIN=false`.
 
 ## Structure du projet
 
