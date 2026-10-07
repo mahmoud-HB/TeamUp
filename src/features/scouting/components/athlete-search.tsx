@@ -22,6 +22,11 @@ const SPORT_OPTIONS = [
   { value: "basketball", label: "Basketball" },
   { value: "rugby", label: "Rugby" },
   { value: "volleyball", label: "Volleyball" },
+  { value: "handball", label: "Handball" },
+  { value: "tennis", label: "Tennis" },
+  { value: "athletisme", label: "Athlétisme" },
+  { value: "natation", label: "Natation" },
+  { value: "cyclisme", label: "Cyclisme" },
 ];
 
 const LEVEL_OPTIONS = [

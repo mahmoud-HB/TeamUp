@@ -67,6 +67,16 @@ export const MOCK_ORGS: MockRecruiterOrg[] = [
     logoUrl: "https://api.dicebear.com/9.x/initials/svg?seed=Volley%20Torino&backgroundType=gradientLinear",
     description: "Club de volleyball italien évoluant en Serie A2.",
   },
+  {
+    id: "org-007",
+    name: "Nordic Endurance Sports",
+    type: "recruiter",
+    country: "Pays-Bas",
+    verified: true,
+    logoColor: "oklch(0.62 0.15 230)",
+    logoUrl: "https://api.dicebear.com/9.x/initials/svg?seed=Nordic%20Endurance&backgroundType=gradientLinear",
+    description: "Agence spécialisée dans le repérage de talents en sports d'endurance (natation, cyclisme, athlétisme).",
+  },
 ];
 
 export const MOCK_OFFERS: MockOffer[] = [
@@ -135,6 +145,17 @@ export const MOCK_OFFERS: MockOffer[] = [
     location: "Italie",
     description: "Recherche joueuse combative, disponible pour la fin de saison.",
     createdAt: "2024-06-05",
+  },
+  {
+    id: "off-007",
+    orgId: "org-007",
+    title: "Cycliste grimpeur pour saison UCI continentale",
+    sportSlug: "cyclisme",
+    positionLabelFr: "Grimpeur",
+    level: "semi_pro",
+    location: "Pays-Bas",
+    description: "Recherche profil endurant, bon ratio poids/puissance, disponible pour un contrat saisonnier.",
+    createdAt: "2024-06-16",
   },
 ];
 

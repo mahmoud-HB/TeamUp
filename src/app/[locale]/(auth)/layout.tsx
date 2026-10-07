@@ -1,6 +1,7 @@
 import { Trophy, Sparkles } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
+import { ThemeToggle } from "@/components/layout/theme-toggle";
 
 /**
  * Layout des écrans d'authentification : panneau de marque en dégradé sur
@@ -43,13 +44,17 @@ export default function AuthLayout({
       </section>
 
       <div className="flex min-h-full flex-1 flex-col items-center justify-center bg-background px-4 py-10">
-        <div className="mb-8 lg:hidden">
+        <div className="mb-8 flex w-full max-w-sm items-center justify-between lg:hidden">
           <Link href="/" className="flex items-center gap-2 text-xl font-semibold tracking-tight">
             <span className="flex size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
               <Trophy className="size-4.5" aria-hidden="true" />
             </span>
             <AppName />
           </Link>
+          <ThemeToggle compact />
+        </div>
+        <div className="hidden w-full max-w-sm justify-end lg:flex">
+          <ThemeToggle compact />
         </div>
         <div className="w-full max-w-sm">{children}</div>
       </div>

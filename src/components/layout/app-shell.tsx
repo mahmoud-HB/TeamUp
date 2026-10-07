@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 import { RoleSwitcher } from "@/components/layout/role-switcher";
+import { ThemeToggle } from "@/components/layout/theme-toggle";
 import type { DevRole } from "@/lib/dev-auth";
 
 type NavItem = {
@@ -91,7 +92,10 @@ export function AppShell({
             />
             {role === "recruiter" ? "Espace recruteur / club" : "Espace athlète"}
           </div>
-          <RoleSwitcher role={role} isDevSession={isDevSession} />
+          <div className="flex items-center gap-2">
+            <RoleSwitcher role={role} isDevSession={isDevSession} />
+            <ThemeToggle compact />
+          </div>
         </div>
       </aside>
 
@@ -103,7 +107,10 @@ export function AppShell({
             </span>
             <span className="text-sm font-semibold tracking-tight">{t("appName")}</span>
           </Link>
-          <RoleSwitcher role={role} isDevSession={isDevSession} compact />
+          <div className="flex items-center gap-1.5">
+            <RoleSwitcher role={role} isDevSession={isDevSession} compact />
+            <ThemeToggle compact />
+          </div>
         </div>
         <main className="flex-1">{children}</main>
       </div>
