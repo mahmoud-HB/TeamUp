@@ -9,7 +9,9 @@
     "notifications": "Notifications",
     "profile": "Profile",
     "appName": "Scoutly",
-    "network": "Network"
+    "network": "Network",
+    "stats": "Statistics",
+    "recruitmentAdvisor": "AI Recruitment"
   },
   "Auth": {
     "login": {
