@@ -8,7 +8,8 @@
     "messages": "Messagerie",
     "notifications": "Notifications",
     "profile": "Profil",
-    "appName": "Scoutly"
+    "appName": "Scoutly",
+    "network": "Réseau"
   },
   "Auth": {
     "login": {
@@ -185,5 +186,21 @@
     "retry": "Réessayer",
     "endOfResults": "Fin des résultats",
     "viewProfile": "Voir le profil"
+  },
+  "Network": {
+    "title": "Réseau",
+    "subtitle": "Découvrez et suivez les meilleurs athlètes",
+    "suggestions": "Suggestions",
+    "follow": "Suivre",
+    "following": "Suivi",
+    "followers": "Followers",
+    "following_count": "Following",
+    "loading": "Chargement...",
+    "noSuggestions": "Aucune suggestion",
+    "noSuggestionsDescription": "Vous suivez déjà beaucoup de gens!",
+    "error": "Erreur",
+    "errorDescription": "Impossible de charger les suggestions",
+    "retry": "Réessayer",
+    "loginRequired": "Veuillez vous connecter"
   }
 }
