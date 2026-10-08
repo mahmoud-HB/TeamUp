@@ -18,6 +18,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ImageUpload } from "@/features/storage/components/image-upload";
 import {
   createAthleteProfileSchema,
   SPORT_LEVELS,
@@ -135,9 +136,18 @@ export function ProfileWizard({
               <Field label={t("identity.username")} error={form.formState.errors.username?.message}>
                 <Input {...form.register("username")} autoComplete="nickname" />
               </Field>
-              <Field label={t("identity.avatar")} error={form.formState.errors.avatarUrl?.message}>
-                <Input {...form.register("avatarUrl")} placeholder="https://" />
-              </Field>
+              <div>
+                <Label>{t("identity.avatar")}</Label>
+                <div className="mt-2">
+                  <ImageUpload
+                    onUpload={(url) => {
+                      form.setValue("avatarUrl", url, { shouldValidate: true });
+                    }}
+                    currentImageUrl={form.watch("avatarUrl")}
+                    label={t("identity.avatar")}
+                  />
+                </div>
+              </div>
               <Field label={t("identity.bio")} error={form.formState.errors.bio?.message}>
                 <Textarea {...form.register("bio")} rows={4} />
               </Field>
