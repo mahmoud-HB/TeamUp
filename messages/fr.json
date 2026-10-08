@@ -136,5 +136,25 @@
     "cancel": "Annuler",
     "save": "Enregistrer",
     "back": "Retour"
+  },
+  "Feed": {
+    "title": "Fil d'actualité",
+    "subtitle": "Dernières actualités de la communauté",
+    "loading": "Chargement du fil...",
+    "loadingMore": "Chargement de plus de posts...",
+    "empty": "Aucun post pour le moment",
+    "emptyDescription": "Suivez des athlètes et des organisations pour voir leurs posts ici.",
+    "error": "Impossible de charger le fil",
+    "errorDescription": "Une erreur est survenue lors du chargement des posts. Veuillez réessayer.",
+    "retry": "Réessayer",
+    "endOfFeed": "Fin du fil d'actualité",
+    "like": "Aimer",
+    "likes": "J'aimes",
+    "comment": "Commenter",
+    "comments": "Commentaires",
+    "share": "Partager",
+    "writeComment": "Écrire un commentaire...",
+    "send": "Envoyer",
+    "jobPosting": "Offre"
   }
 }

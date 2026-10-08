@@ -136,5 +136,25 @@
     "cancel": "Cancel",
     "save": "Save",
     "back": "Back"
+  },
+  "Feed": {
+    "title": "Feed",
+    "subtitle": "Latest updates from the community",
+    "loading": "Loading feed...",
+    "loadingMore": "Loading more posts...",
+    "empty": "No posts yet",
+    "emptyDescription": "Follow athletes and organizations to see their posts here.",
+    "error": "Failed to load feed",
+    "errorDescription": "An error occurred while loading posts. Please try again.",
+    "retry": "Retry",
+    "endOfFeed": "End of feed",
+    "like": "Like",
+    "likes": "Likes",
+    "comment": "Comment",
+    "comments": "Comments",
+    "share": "Share",
+    "writeComment": "Write a comment...",
+    "send": "Send",
+    "jobPosting": "Offer"
   }
 }
