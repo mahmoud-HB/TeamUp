@@ -1,6 +1,6 @@
 "use client";
 
-import { Home, Search, MessageCircle, Bell, UserRound, Trophy } from "lucide-react";
+import { Home, Search, MessageCircle, Bell, UserRound, Trophy, Sparkles } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
@@ -10,13 +10,14 @@ import type { DevRole } from "@/lib/dev-auth";
 
 type NavItem = {
   href: string;
-  labelKey: "home" | "search" | "messages" | "notifications" | "profile";
+  labelKey: "home" | "search" | "messages" | "notifications" | "profile" | "assistant";
   icon: typeof Home;
 };
 
 const NAV_ITEMS: NavItem[] = [
   { href: "/", labelKey: "home", icon: Home },
   { href: "/search", labelKey: "search", icon: Search },
+  { href: "/assistant", labelKey: "assistant", icon: Sparkles },
   { href: "/messages", labelKey: "messages", icon: MessageCircle },
   { href: "/notifications", labelKey: "notifications", icon: Bell },
   { href: "/profile", labelKey: "profile", icon: UserRound },
