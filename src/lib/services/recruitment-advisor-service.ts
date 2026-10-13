@@ -4,7 +4,7 @@
  * Ready for integration with OpenAI/Claude APIs
  */
 
-import { ServiceResult, ok, err, isDemoMode } from "./index";
+import { ServiceResult, ok, err, isDemoMode } from "./core";
 import { ALL_MOCK_ATHLETES } from "@/lib/mock/athletes-extended";
 import type { MockAthlete } from "@/lib/mock/types";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";

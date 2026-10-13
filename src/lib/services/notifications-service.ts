@@ -2,7 +2,7 @@
  * NotificationsService: système de notifications en temps réel
  */
 
-import { ServiceResult, ok } from "./index";
+import { ServiceResult, ok } from "./core";
 
 export interface Notification {
   id: string;

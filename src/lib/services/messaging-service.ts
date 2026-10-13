@@ -4,7 +4,7 @@
  * Service Messagerie : conversations et messages avec bascule mock/Supabase.
  */
 
-import { getDataSource, ok, err, type ServiceResult } from "./index";
+import { getDataSource, ok, err, type ServiceResult } from "./core";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 
 export interface Conversation {

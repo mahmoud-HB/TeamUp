@@ -2,7 +2,7 @@
  * ModerationService: gestion de la modération et admin
  */
 
-import { ServiceResult, ok, err } from "./index";
+import { ServiceResult, ok, err } from "./core";
 
 export interface ReportedContent {
   id: string;

@@ -3,7 +3,7 @@
  * Répartition: profile views, network stats, offer stats, gaming stats, trends
  */
 
-import { ServiceResult, ok, err, isDemoMode } from "./index";
+import { ServiceResult, ok, err, isDemoMode } from "./core";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 
 export interface AthleteStats {

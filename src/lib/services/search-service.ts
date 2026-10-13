@@ -3,7 +3,7 @@
  * Bascule automatique mock ↔ Supabase via NEXT_PUBLIC_DEMO_MODE
  */
 
-import { ServiceResult, ok, err, isDemoMode } from "./index";
+import { ServiceResult, ok, err, isDemoMode } from "./core";
 import { MOCK_ATHLETES } from "@/lib/mock/athletes";
 import type { MockAthlete } from "@/lib/mock/types";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";

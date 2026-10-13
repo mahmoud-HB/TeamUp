@@ -3,7 +3,7 @@
  * Mode démo uniquement pour MVP
  */
 
-import { ServiceResult, ok, err, isDemoMode } from "./index";
+import { ServiceResult, ok, err, isDemoMode } from "./core";
 
 export interface Team {
   id: string;

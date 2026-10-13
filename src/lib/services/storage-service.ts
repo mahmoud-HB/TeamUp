@@ -4,7 +4,7 @@
  * Service de stockage : upload fichiers vers Supabase Storage ou mock en démo.
  */
 
-import { getDataSource, ok, err, type ServiceResult } from "./index";
+import { getDataSource, ok, err, type ServiceResult } from "./core";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 
 export interface UploadResult {

@@ -5,7 +5,7 @@
  * Bascule entre mode démo (mock results) et réel (Supabase queries).
  */
 
-import { getDataSource, ok, err, type ServiceResult } from "./index";
+import { getDataSource, ok, err, type ServiceResult } from "./core";
 import { MOCK_ATHLETES } from "@/lib/mock/athletes";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import { z } from "zod";

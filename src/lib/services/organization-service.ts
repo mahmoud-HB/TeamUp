@@ -4,7 +4,7 @@
  * Service Organisations : CRUD sur orgs et offers, avec bascule mock/Supabase.
  */
 
-import { getDataSource, ok, err, type ServiceResult } from "./index";
+import { getDataSource, ok, err, type ServiceResult } from "./core";
 import { MOCK_ORGS, MOCK_OFFERS, findMockOrgById, findMockOfferById } from "@/lib/mock/organizations";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 

@@ -3,7 +3,7 @@
  * Mode démo uniquement pour MVP
  */
 
-import { ServiceResult, ok, err } from "./index";
+import { ServiceResult, ok, err } from "./core";
 
 export interface Offer {
   id: string;

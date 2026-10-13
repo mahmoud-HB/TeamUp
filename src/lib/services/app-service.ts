@@ -2,7 +2,7 @@
  * AppService: utilitaires d'app (analytics, Capacitor prep)
  */
 
-import { ServiceResult, ok } from "./index";
+import { ServiceResult, ok } from "./core";
 
 export interface AppConfig {
   version: string;
