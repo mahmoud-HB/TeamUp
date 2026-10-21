@@ -44,3 +44,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local deploy artifacts (may contain secrets)
+deploy-api.sh
+*.log
+*.zip
